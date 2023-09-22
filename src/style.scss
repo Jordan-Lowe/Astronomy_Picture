@@ -1,0 +1,264 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #333;
+}
+
+.Container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background: #333;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftWrapper {
+  flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+.rightWrapper {
+  flex: 1;
+  flex: 2;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ui-layer {
+  display: grid;
+  height: 80%;
+  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px;
+  border: 5px solid #fff;
+}
+
+.uiPhoto {
+  border: 3px solid #fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ui-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ui-layer {
+  display: grid;
+  height: 80%;
+  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.uiPhoto {
+  border: 3px solid #fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ui-layer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.uiPhoto {
+  border: 3px solid #fff;
+  --border-size: 3px;
+  --border-angle: 0turn;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #213,
+      #112 50%,
+      #213
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: bg-spin 3s linear infinite;
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+.uiPhoto:hover {
+  animation-play-state: paused;
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.mainWrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.imgAndExplanationWrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+}
+
+.detailWrapper {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  flex-direction: row;
+}
+
+.imageWrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.imageWrapper img,
+.imageWrapper iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageWrapper img,
+.imageWrapper iframe {
+  top: 0;
+  left: 0;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #333;
+  margin-top: 10px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.todaysImgWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.todaysImgWrapper img {
+  border: 3px solid #fff;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.imageInfo h1,
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
+  text-align: center;
+}
+
+.heading .dateInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: auto;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.todayWrapper {
+  flex: 1;
+  height: 100vh;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.todayWrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.galleryWrapper {
+  flex: 1;
+  height: 100vh;
+  width: 40%;
+  display: flex;
+}
