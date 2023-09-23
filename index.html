@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./src/style.css" />
-		<title>Vite + TS</title>
-	</head>
-	<body>
-		<div id="app">
-			<div class="Container">
-				<div class="leftWrapper">
-					<div class="heading">
-						<div class="imageWrapper">
-							<input type="date" id="searchDate" name="date" />
-							<button id="searchButton">Search</button>
-						</div>
-						<h1 id="imageTitle"></h1>
-						<p id="imageDate"></p>
-					</div>
-					<img id="dailyImage" alt="NASA daily image" />
-					<div class="description">
-						<p id="imageDescription"></p>
-					</div>
-				</div>
-				<div class="rightWrapper">
-					<div class="cardWrapper">
-						<div class="imageWrapper"></div>
-					</div>
-				</div>
-			</div>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="Container">
+        <div class="leftWrapper">
+          <div class="heading">
+            <div class="imageDetails">
+              <input type="date" id="searchDate" name="date" />
+              <button id="searchButton">Search</button>
+              <h1 id="imageTitle"></h1>
+              <p id="imageDate"></p>
+            </div>
+          </div>
+          <div class="imageAndDesc">
+            <img id="dailyImage" alt="NASA daily image" />
+            <div class="description">
+              <p id="imageDescription"></p>
+            </div>
+          </div>
+        </div>
+        <div class="rightWrapper">
+          <div class="cardWrapper">
+            <div class="imageWrapper"></div>
+          </div>
+        </div>
+      </div>
 
-			<div id="leftContainer"></div>
-		</div>
-		<script type="module" src="/src/main.ts"></script>
-	</body>
+      <div id="leftContainer"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
