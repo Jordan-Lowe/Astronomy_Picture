@@ -10,6 +10,12 @@ import {
   setDoc,
 } from 'firebase/firestore'
 
+import {
+  fetchRandomImages,
+  fetchPopularImages,
+  fetchLatestImage,
+} from '../helpers/fetching'
+
 interface Data {
   error?: { message: string }
   code?: any
@@ -25,10 +31,16 @@ interface Data {
 class Cards {
   private photos: Data[] = []
   private cardState: string = 'photos'
+  private fetchDataFunction: () => Promise<Data[] | Data>
 
-  constructor(public onImageClick: (imageData: Data) => void) {
+  constructor(
+    public onImageClick: (imageData: Data) => void,
+    fetchDataFunction: () => Promise<Data[] | Data>
+  ) {
+    this.fetchDataFunction = fetchDataFunction
     this.fetchData()
   }
+
   private async storeDataInFirebase(data: Data) {
     if (data.date) {
       try {
@@ -75,7 +87,7 @@ class Cards {
 
   private fetchData() {
     fetch(
-      'https://api.nasa.gov/planetary/apod?api_key=E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB&count=2'
+      'https://api.nasa.gov/planetary/apod?api_key=E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB&count=2 '
     )
       .then((response) => response.json())
       .then((data) => {
@@ -118,6 +130,11 @@ class Cards {
     const container = document.querySelector('#leftContainer')
     container?.appendChild(cardWrapper)
   }
+
+  public clear() {
+    const cardWrappers = document.querySelectorAll('.cardWrapper')
+    cardWrappers.forEach((wrapper) => wrapper.remove())
+  }
 }
 
 function handleImageClick(imageData: Data): void {
@@ -128,7 +145,8 @@ function handleImageClick(imageData: Data): void {
     imageData.explanation!
 }
 
-new Cards(handleImageClick)
+new Cards(handleImageClick, fetchRandomImages)
+fetchDailyImage(new Date().toISOString().split('T')[0])
 
 function fetchDailyImage(dateToFetch: string) {
   const url = `https://api.nasa.gov/planetary/apod?date=${dateToFetch}&api_key=E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB`
@@ -153,6 +171,30 @@ document.getElementById('searchButton')!.addEventListener('click', () => {
 })
 
 fetchDailyImage(new Date().toISOString().split('T')[0])
+
+//Tab switch functionality
+// Tab switch functionality
+const tabSwitch = document.querySelectorAll('.tabItems')
+tabSwitch.forEach((tab) => {
+  tab.addEventListener('click', async (e) => {
+    // Clear previous images
+    const cardsInstance = new Cards(handleImageClick, fetchRandomImages)
+    cardsInstance.clear()
+
+    const tabName = (e.target as HTMLElement).textContent
+    switch (tabName) {
+      case 'Random':
+        new Cards(handleImageClick, fetchRandomImages)
+        break
+      case 'Popular':
+        new Cards(handleImageClick, fetchPopularImages)
+        break
+      case 'Latest':
+        new Cards(handleImageClick, fetchLatestImage)
+        break
+    }
+  })
+})
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAoARK8yJAehauyYbcx3nMkI6u9jSuUhms',
