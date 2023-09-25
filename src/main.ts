@@ -53,7 +53,7 @@ latestTab?.addEventListener('click', async () => {
 // Fetch random images from NASA API
 async function fetchRandomImages(): Promise<Data[]> {
   // Construct API URL
-  const url = `${NASA_API_BASE}?count=2&api_key=${API_KEY}`
+  const url = `${NASA_API_BASE}?count=9&api_key=${API_KEY}`
 
   // Fetch data from API
   const response = await fetch(url)
@@ -71,7 +71,7 @@ async function fetchPopularImages(): Promise<Data[]> {
   const q = query(
     collection(db, 'nasaData'),
     orderBy('clicks', 'desc'),
-    limit(2)
+    limit(9)
   )
 
   // Get query snapshot from Firestore
@@ -98,24 +98,12 @@ async function fetchLatestImage(): Promise<Data> {
 }
 
 function displayImages(images: Data[]) {
-  console.log(images.length)
-
-  // Get photo elements from DOM
-  const photo1 = document.getElementById('photo1') as HTMLImageElement
-  const photo2 = document.getElementById('photo2') as HTMLImageElement
-
-  // Check if image data exists for first photo
-  if (images[0]) {
-    // Set photo1 src and alt attributes
-    photo1.src = images[0].url ?? ''
-    photo1.alt = images[0].title ?? ''
-  }
-
-  // Check if image data exists for second photo
-  if (images[1]) {
-    // Set photo2 src and alt attributes
-    photo2.src = images[1].url ?? ''
-    photo2.alt = images[1].title ?? ''
+  for (let i = 0; i < 9; i++) {
+    const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
+    if (images[i]) {
+      photo.src = images[i].url ?? ''
+      photo.alt = images[i].title ?? ''
+    }
   }
 }
 
