@@ -40,6 +40,7 @@ randomTab?.addEventListener('click', async () => {
 })
 
 popularTab?.addEventListener('click', async () => {
+  // Fetch the latest image from the server
   const images = await fetchPopularImages()
   displayImages(images)
 })
@@ -49,24 +50,42 @@ latestTab?.addEventListener('click', async () => {
   displayImages([image])
 })
 
+// Fetch random images from NASA API
 async function fetchRandomImages(): Promise<Data[]> {
+  // Construct API URL
   const url = `${NASA_API_BASE}?count=2&api_key=${API_KEY}`
+
+  // Fetch data from API
   const response = await fetch(url)
+
+  // Parse response as JSON
   const data: Data[] = await response.json()
+
+  // Return fetched data
   return data
 }
 
+// Fetch popular images from Firestore
 async function fetchPopularImages(): Promise<Data[]> {
+  // Define query to get 2 most popular images
   const q = query(
     collection(db, 'nasaData'),
     orderBy('clicks', 'desc'),
     limit(2)
   )
+
+  // Get query snapshot from Firestore
   const querySnapshot = await getDocs(q)
+
+  // Initialize array to store popular images
   const popularImages: Data[] = []
+
+  // Loop through query snapshot and push data to popularImages array
   querySnapshot.forEach((doc) => {
     popularImages.push(doc.data() as Data)
   })
+
+  // Return popular images array
   return popularImages
 }
 
@@ -79,15 +98,20 @@ async function fetchLatestImage(): Promise<Data> {
 }
 
 function displayImages(images: Data[]) {
+  // Get photo elements from DOM
   const photo1 = document.getElementById('photo1') as HTMLImageElement
   const photo2 = document.getElementById('photo2') as HTMLImageElement
 
+  // Check if image data exists for first photo
   if (images[0]) {
+    // Set photo1 src and alt attributes
     photo1.src = images[0].url ?? ''
     photo1.alt = images[0].title ?? ''
   }
 
+  // Check if image data exists for second photo
   if (images[1]) {
+    // Set photo2 src and alt attributes
     photo2.src = images[1].url ?? ''
     photo2.alt = images[1].title ?? ''
   }
@@ -158,6 +182,9 @@ fetchDailyImage(new Date().toISOString().split('T')[0])
 window.addEventListener('load', async () => {
   const images = await fetchRandomImages()
   displayImages(images)
+
+  const today = new Date().toISOString().split('T')[0]
+  fetchDailyImage(today)
 })
 
 const firebaseConfig = {
