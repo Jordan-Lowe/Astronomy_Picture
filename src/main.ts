@@ -131,6 +131,30 @@ async function incrementClickCount(data: Data) {
   }
 }
 
+function fetchDailyImage(dateToFetch: string) {
+  const url = `${NASA_API_BASE}?date=${dateToFetch}&api_key=${API_KEY}`
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById('dailyImage')!.setAttribute('src', data.url!)
+      document.getElementById('imageTitle')!.textContent = data.title!
+      document.getElementById('imageDate')!.textContent = data.date!
+      document.getElementById('imageDescription')!.textContent =
+        data.explanation!
+    })
+    .catch((error) => console.error('Error fetching daily image:', error))
+}
+
+document.getElementById('searchButton')!.addEventListener('click', () => {
+  const selectedDate = (
+    document.getElementById('searchDate') as HTMLInputElement
+  ).value
+  fetchDailyImage(selectedDate)
+})
+
+fetchDailyImage(new Date().toISOString().split('T')[0])
+
 window.addEventListener('load', async () => {
   const images = await fetchRandomImages()
   displayImages(images)
