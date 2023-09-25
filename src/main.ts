@@ -107,6 +107,46 @@ function displayImages(images: Data[]) {
   }
 }
 
+function attachClickEventToPhotos(images: Data[]) {
+  for (let i = 0; i < images.length; i++) {
+    const photoDiv = document.querySelector(`.ui-photos:nth-child(${i + 1})`)
+    if (photoDiv) {
+      photoDiv.addEventListener('click', () => {
+        updateLeftWrapper(images[i])
+      })
+    }
+  }
+}
+
+function updateLeftWrapper(image: Data) {
+  const dailyImage = document.getElementById('dailyImage') as HTMLImageElement
+  const imageTitle = document.getElementById('imageTitle') as HTMLElement
+  const imageDate = document.getElementById('imageDate') as HTMLElement
+  const imageDescription = document.getElementById(
+    'imageDescription'
+  ) as HTMLElement
+
+  dailyImage.src = image.url ?? ''
+  imageTitle.textContent = image.title ?? ''
+  imageDate.textContent = image.date ?? ''
+  imageDescription.textContent = image.explanation ?? ''
+}
+
+// After fetching and displaying images, attach click event to each .ui-photos div.
+async function onTabClick(fetchImages: () => Promise<Data[]>) {
+  const images = await fetchImages()
+  displayImages(images)
+  attachClickEventToPhotos(images)
+}
+
+randomTab?.addEventListener('click', () => onTabClick(fetchRandomImages))
+popularTab?.addEventListener('click', () => onTabClick(fetchPopularImages))
+latestTab?.addEventListener('click', async () => {
+  const image = await fetchLatestImage()
+  displayImages([image])
+  attachClickEventToPhotos([image])
+})
+
 async function storeDataInFirebase(data: Data) {
   if (data.date) {
     try {
