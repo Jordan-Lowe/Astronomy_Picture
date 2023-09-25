@@ -98,6 +98,8 @@ async function fetchLatestImage(): Promise<Data> {
 }
 
 function displayImages(images: Data[]) {
+  console.log(images.length)
+
   // Get photo elements from DOM
   const photo1 = document.getElementById('photo1') as HTMLImageElement
   const photo2 = document.getElementById('photo2') as HTMLImageElement
