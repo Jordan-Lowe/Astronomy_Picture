@@ -8,6 +8,10 @@ import {
   updateDoc,
   increment,
   setDoc,
+  getDocs,
+  limit,
+  orderBy,
+  query,
 } from 'firebase/firestore'
 
 interface Data {
@@ -22,116 +26,167 @@ interface Data {
   explanation?: string
 }
 
-class Cards {
-  private photos: Data[] = []
-  private cardState: string = 'photos'
+const API_KEY = 'E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB'
+const NASA_API_BASE = 'https://api.nasa.gov/planetary/apod'
 
-  constructor(public onImageClick: (imageData: Data) => void) {
-    this.fetchData()
-  }
-  private async storeDataInFirebase(data: Data) {
-    if (data.date) {
-      try {
-        const docRef = doc(db, 'nasaData', data.date)
-        const docSnap = await getDoc(docRef)
+const randomTab = document.getElementById('random')
+const popularTab = document.getElementById('popular')
+const latestTab = document.getElementById('latest')
 
-        if (!docSnap.exists()) {
-          // If document doesn't exist, create it with clicks set to 0
-          await setDoc(docRef, {
-            ...data,
-            clicks: 0,
-          })
-        }
-        // If the document already exists, we don't need to do anything here since the clicks will be updated via the incrementClickCount method
-      } catch (error) {
-        console.error('Error checking or adding document:', error)
-      }
+// Set up event listeners on the list items
+randomTab?.addEventListener('click', async () => {
+  const images = await fetchRandomImages()
+  displayImages(images)
+})
+
+popularTab?.addEventListener('click', async () => {
+  // Fetch the latest image from the server
+  const images = await fetchPopularImages()
+  displayImages(images)
+})
+
+latestTab?.addEventListener('click', async () => {
+  const image = await fetchLatestImage()
+  displayImages([image])
+})
+
+// Fetch random images from NASA API
+async function fetchRandomImages(): Promise<Data[]> {
+  // Construct API URL
+  const url = `${NASA_API_BASE}?count=9&api_key=${API_KEY}`
+
+  // Fetch data from API
+  const response = await fetch(url)
+
+  // Parse response as JSON
+  const data: Data[] = await response.json()
+
+  // Return fetched data
+  return data
+}
+
+// Fetch popular images from Firestore
+async function fetchPopularImages(): Promise<Data[]> {
+  // Define query to get 2 most popular images
+  const q = query(
+    collection(db, 'nasaData'),
+    orderBy('clicks', 'desc'),
+    limit(9)
+  )
+
+  // Get query snapshot from Firestore
+  const querySnapshot = await getDocs(q)
+
+  // Initialize array to store popular images
+  const popularImages: Data[] = []
+
+  // Loop through query snapshot and push data to popularImages array
+  querySnapshot.forEach((doc) => {
+    popularImages.push(doc.data() as Data)
+  })
+
+  // Return popular images array
+  return popularImages
+}
+
+async function fetchLatestImage(): Promise<Data> {
+  const today = new Date().toISOString().split('T')[0]
+  const url = `${NASA_API_BASE}?date=${today}&api_key=${API_KEY}`
+  const response = await fetch(url)
+  const data: Data = await response.json()
+  return data
+}
+
+function displayImages(images: Data[]) {
+  for (let i = 0; i < 9; i++) {
+    const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
+    if (images[i]) {
+      photo.src = images[i].url ?? ''
+      photo.alt = images[i].title ?? ''
     }
   }
+}
 
-  private async incrementClickCount(data: Data) {
-    if (data.date) {
-      try {
-        const docRef = doc(db, 'nasaData', data.date)
-        const docSnap = await getDoc(docRef)
-
-        if (docSnap.exists()) {
-          // If document exists, update the clicks
-          await updateDoc(docRef, {
-            clicks: increment(1),
-          })
-        } else {
-          // If document doesn't exist, create it with clicks set to 1
-          await setDoc(docRef, {
-            ...data,
-            clicks: 1,
-          })
-        }
-      } catch (error) {
-        console.error('Error updating click count:', error)
-      }
+function attachClickEventToPhotos(images: Data[]) {
+  for (let i = 0; i < images.length; i++) {
+    const photoDiv = document.querySelector(`.ui-photos:nth-child(${i + 1})`)
+    if (photoDiv) {
+      photoDiv.addEventListener('click', () => {
+        updateLeftWrapper(images[i])
+      })
     }
   }
+}
 
-  private fetchData() {
-    fetch(
-      'https://api.nasa.gov/planetary/apod?api_key=E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB&count=2'
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.photos = data
-        this.photos.forEach((photo) => {
-          this.storeDataInFirebase(photo)
+function updateLeftWrapper(image: Data) {
+  const dailyImage = document.getElementById('dailyImage') as HTMLImageElement
+  const imageTitle = document.getElementById('imageTitle') as HTMLElement
+  const imageDate = document.getElementById('imageDate') as HTMLElement
+  const imageDescription = document.getElementById(
+    'imageDescription'
+  ) as HTMLElement
+
+  dailyImage.src = image.url ?? ''
+  imageTitle.textContent = image.title ?? ''
+  imageDate.textContent = image.date ?? ''
+  imageDescription.textContent = image.explanation ?? ''
+}
+
+// After fetching and displaying images, attach click event to each .ui-photos div.
+async function onTabClick(fetchImages: () => Promise<Data[]>) {
+  const images = await fetchImages()
+  displayImages(images)
+  attachClickEventToPhotos(images)
+}
+
+randomTab?.addEventListener('click', () => onTabClick(fetchRandomImages))
+popularTab?.addEventListener('click', () => onTabClick(fetchPopularImages))
+latestTab?.addEventListener('click', async () => {
+  const image = await fetchLatestImage()
+  displayImages([image])
+  attachClickEventToPhotos([image])
+})
+
+async function storeDataInFirebase(data: Data) {
+  if (data.date) {
+    try {
+      const docRef = doc(db, 'nasaData', data.date)
+      const docSnap = await getDoc(docRef)
+      if (!docSnap.exists()) {
+        await setDoc(docRef, {
+          ...data,
+          clicks: 0,
         })
-        this.render()
-      })
-      .catch((error) => console.error('Error fetching photos:', error))
-  }
-
-  public render() {
-    const cardWrapper = document.createElement('div')
-    cardWrapper.className = 'cardWrapper'
-    cardWrapper.setAttribute('data-state', this.cardState)
-
-    const uiLayer = document.createElement('div')
-    uiLayer.className = 'ui-layer'
-
-    this.photos.forEach((photoData) => {
-      const uiPhoto = document.createElement('div')
-      uiPhoto.className = 'ui-photo'
-      uiPhoto.setAttribute('data-photo', photoData.url!)
-      uiPhoto.addEventListener('click', () => {
-        this.onImageClick(photoData)
-        this.incrementClickCount(photoData)
-      })
-
-      const img = document.createElement('img')
-      img.src = photoData.url!
-      img.alt = photoData.title!
-
-      uiPhoto.appendChild(img)
-      uiLayer.appendChild(uiPhoto)
-    })
-
-    cardWrapper.appendChild(uiLayer)
-
-    const container = document.querySelector('#leftContainer')
-    container?.appendChild(cardWrapper)
+      }
+    } catch (error) {
+      console.error('Error checking or adding document:', error)
+    }
   }
 }
 
-function handleImageClick(imageData: Data): void {
-  document.getElementById('dailyImage')!.setAttribute('src', imageData.url!)
-  document.getElementById('imageTitle')!.textContent = imageData.title!
-  document.getElementById('imageDate')!.textContent = imageData.date!
-  document.getElementById('imageDescription')!.textContent =
-    imageData.explanation!
+async function incrementClickCount(data: Data) {
+  if (data.date) {
+    try {
+      const docRef = doc(db, 'nasaData', data.date)
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        await updateDoc(docRef, {
+          clicks: increment(1),
+        })
+      } else {
+        await setDoc(docRef, {
+          ...data,
+          clicks: 1,
+        })
+      }
+    } catch (error) {
+      console.error('Error incrementing click count:', error)
+    }
+  }
 }
-
-new Cards(handleImageClick)
 
 function fetchDailyImage(dateToFetch: string) {
-  const url = `https://api.nasa.gov/planetary/apod?date=${dateToFetch}&api_key=E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB`
+  const url = `${NASA_API_BASE}?date=${dateToFetch}&api_key=${API_KEY}`
 
   fetch(url)
     .then((response) => response.json())
@@ -153,6 +208,14 @@ document.getElementById('searchButton')!.addEventListener('click', () => {
 })
 
 fetchDailyImage(new Date().toISOString().split('T')[0])
+
+window.addEventListener('load', async () => {
+  const images = await fetchRandomImages()
+  displayImages(images)
+
+  const today = new Date().toISOString().split('T')[0]
+  fetchDailyImage(today)
+})
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAoARK8yJAehauyYbcx3nMkI6u9jSuUhms',
