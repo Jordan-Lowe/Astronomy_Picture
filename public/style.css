@@ -34,7 +34,7 @@ body {
   width: 100%;
   flex-direction: column;
   object-fit: cover;
-  margin-left: 10px;
+  margin: 10px;
   object-fit: cover;
 }
 
@@ -47,6 +47,7 @@ body {
   justify-content: center;
   align-items: center;
   object-fit: contain;
+  margin: 10px;
 }
 
 .tabList {
@@ -55,7 +56,6 @@ body {
   flex-direction: row;
   list-style: none;
   justify-content: space-between;
-  margin: 10px;
 }
 
 .cardWrapper {
@@ -65,16 +65,18 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  border: 5px solid #000;
+  object-fit: contain;
 }
 
 .ui-layer {
   display: grid;
   height: 80%;
-  width: 100%;
+  width: 90%;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 20px;
-  /* border: 5px solid #fff; */
+  justify-content: space-evenly;
 }
 
 .ui-photos {
@@ -91,20 +93,10 @@ body {
   object-position: center center;
 }
 
-.ui-layer {
-  display: grid;
-  height: 80%;
-  width: 90%;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 20px;
-}
-
 .ui-photos {
   border: 3px solid #fff;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  width: 90%;
+  height: 90%;
 }
 
 .ui-photos img {
@@ -112,42 +104,6 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-}
-
-.ui-photos {
-  border: 5px solid #fff;
-  --border-size: 3px;
-  --border-angle: 0turn;
-  background-image: conic-gradient(
-      from var(--border-angle),
-      #213,
-      #112 50%,
-      #213
-    ),
-    conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
-  background-size: calc(100% - (var(--border-size) * 2))
-      calc(100% - (var(--border-size) * 2)),
-    cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  animation: bg-spin 3s linear infinite;
-}
-
-@keyframes bg-spin {
-  to {
-    --border-angle: 1turn;
-  }
-}
-
-.ui-photos:hover {
-  animation-play-state: paused;
-}
-
-@property --border-angle {
-  syntax: '<angle>';
-  inherits: true;
-  initial-value: 0turn;
 }
 
 #searchDate {
@@ -188,14 +144,13 @@ body {
 
 .imageDetails {
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .imageAndDesc {
-  height: 80%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -213,7 +168,7 @@ body {
 
 .heading {
   margin-top: 0;
-  height: 100%;
+  /* height: 15%; */
   display: flex;
   flex-direction: row;
   width: 100%;
