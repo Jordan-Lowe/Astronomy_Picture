@@ -1,206 +1,204 @@
 body {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  background: #333;
-  object-fit: contain;
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	background: #333;
+	object-fit: contain;
 }
 
 #app {
-  height: 98%;
-  width: 98%;
-  margin: 0;
-  padding: 0;
-  background: #333;
-  display: flex;
-  object-fit: contain;
+	height: 98%;
+	width: 98%;
+	margin: 0;
+	padding: 0;
+	background: #333;
+	display: flex;
+	object-fit: contain;
+	position: absolute;
 }
 
 .Container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  background: #333;
-  display: flex;
-  flex-direction: row;
-  object-fit: contain;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	background: #333;
+	display: flex;
+	flex-direction: row;
+	object-fit: contain;
 }
 
 .leftWrapper {
-  flex: 1;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  object-fit: cover;
-  margin: 10px;
-  object-fit: cover;
-}
-
-.rightWrapper {
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  object-fit: contain;
-  margin: 10px;
-}
-
-.tabList {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  list-style: none;
-  justify-content: space-between;
-}
-
-.cardWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  height: 80%;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border: 5px solid #000;
-  object-fit: contain;
-}
-
-.ui-layer {
-  display: grid;
-  height: 80%;
-  width: 90%;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-gap: 20px;
-  justify-content: space-evenly;
-}
-
-.ui-photos {
-  border: 3px solid #fff;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.ui-layer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.ui-photos {
-  border: 3px solid #fff;
-  width: 90%;
-  height: 90%;
-}
-
-.ui-photos img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+	flex: 1;
+	display: flex;
+	height: 100%;
+	width: 100%;
+	flex-direction: column;
+	margin: 10px;
+	object-fit: contain;
 }
 
 #searchDate {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30%;
-  margin-bottom: 10px;
-  margin-left: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30%;
+	margin-bottom: 10px;
+	margin-left: 10px;
 }
 
 #searchButton {
-  display: flex;
-  justify-content: center;
-  height: 34%;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	height: 34%;
+	align-items: center;
 }
 
 #imageTitle {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  justify-content: space-evenly;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+	justify-content: space-evenly;
 }
 
 .description {
-  flex: 1;
-  overflow: auto;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  padding: 10px;
-  margin: 10px;
-  flex-direction: row;
-  color: #fff;
+	flex: 1;
+	overflow: auto;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	margin: 10px;
+	flex-direction: row;
+	color: #fff;
 }
 
 .imageDetails {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .imageAndDesc {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  object-fit: contain;
-  object-position: center center;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	object-fit: contain;
+	object-position: center center;
 }
 
 .imageAndDesc img {
-  border: 3px solid #fff;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+	border: 3px solid #fff;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
 }
 
 .heading {
-  margin-top: 0;
-  /* height: 15%; */
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: #333;
-  margin-top: 10px;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 0 10px #fff;
-  text-align: center;
+	margin-top: 0;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-color: #333;
+	margin-top: 10px;
+	justify-content: space-evenly;
+	align-items: center;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
+	text-align: center;
 }
 
 h1 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #fff;
-  text-shadow: 0 0 10px #fff;
-  text-align: center;
+	font-size: 1.6rem;
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
+	text-align: center;
 }
 
-.todaysImgWrapper {
-  display: flex;
-  width: 100%;
-  height: 100%;
+.rightWrapper {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	/* align-items: center; */
+	object-fit: contain;
+	margin: 10px;
+	height: 100%;
+	width: 100%;
 }
 
-.todaysImgWrapper img {
-  border: 3px solid #fff;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+.tabList {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	list-style: none;
+	justify-content: space-between;
+	height: 5%;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0 0 10px #fff;
+	text-align: center;
+}
+
+.cardWrapper {
+	box-sizing: border-box;
+	display: flex;
+	flex-wrap: wrap;
+	height: 94%;
+	align-items: center;
+	width: 100%;
+	object-fit: contain;
+}
+
+.imageWrapper {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.imageWrapper img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.ui-layer {
+	display: grid;
+	height: 100%;
+	width: 100%;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	/* grid-gap: 10px; */
+	justify-content: space-between;
+	object-fit: contain;
+}
+
+.ui-layer img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.ui-photos {
+	border: 3px solid #fff;
+	width: 90%;
+	height: 90%;
+	overflow: hidden;
+}
+
+.ui-photos img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
 }
