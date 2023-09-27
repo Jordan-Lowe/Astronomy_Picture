@@ -4,7 +4,7 @@ body {
 	margin: 0;
 	padding: 0;
 	object-fit: contain;
-	background-image: url("../public/Images/Space-Background.jpg");
+	background-image: url("../Images/Space-Background.jpg");
 	overflow: hidden;
 }
 
@@ -130,9 +130,10 @@ h1 {
 	object-fit: contain;
 	margin: 10px;
 	height: 100%;
-	width: 100%;
+	width: 90%;
 	justify-content: center;
 	margin-right: 0px;
+	margin-left: 15px;
 }
 
 .tabList {
@@ -148,6 +149,7 @@ h1 {
 	text-align: center;
 	margin-left: 0px;
 	margin-top: 15px;
+	cursor: pointer;
 }
 
 .cardWrapper {
