@@ -1,72 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div id="app">
-      <div class="Container">
-        <div class="leftWrapper">
-          <!-- <div class="heading"> -->
-          <div class="imageDetails">
-            <input type="date" id="searchDate" name="date" />
-            <button id="searchButton">Search</button>
-            <h1 id="imageTitle"></h1>
-            <p id="imageDate"></p>
-          </div>
-          <!-- </div> -->
-          <div class="imageAndDesc">
-            <img id="dailyImage" alt="NASA daily image" />
-            <div class="description">
-              <p id="imageDescription"></p>
-            </div>
-          </div>
-        </div>
-        <div class="rightWrapper">
-          <ul class="tabList">
-            <li id="random" class="tabItems">Random</li>
-            <li id="popular" class="tabItems">Popular</li>
-            <li id="latest" class="tabItems">Latest</li>
-          </ul>
-          <div class="cardWrapper">
-            <div class="imageWrapper">
-              <div class="ui-layer">
-                <div class="ui-photos">
-                  <img id="photo1" alt="NASA Image 1" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo2" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo3" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo4" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo5" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo6" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo7" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo8" alt="NASA Image 2" />
-                </div>
-                <div class="ui-photos">
-                  <img id="photo9" alt="NASA Image 2" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script type="module" src="./src/main.ts"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>Vite + TS</title>
+	</head>
+	<body>
+		<div id="app">
+			<div class="titleContainer">
+				<h1>NASA Astronomy Picture of the day</h1>
+			</div>
+			<div class="Container">
+				<div class="leftWrapper">
+					<div class="imageDetails">
+						<input type="date" id="searchDate" name="date" />
+						<button id="searchButton">Search</button>
+						<h2 id="imageTitle"></h2>
+						<p id="imageDate"></p>
+					</div>
+					<div class="imageAndDesc">
+						<img id="dailyImage" alt="NASA daily image" />
+						<div class="description">
+							<p id="imageDescription"></p>
+						</div>
+					</div>
+				</div>
+				<div class="rightWrapper">
+					<ul class="tabList">
+						<li id="random" class="tabItems">Random</li>
+						<li id="popular" class="tabItems">Popular</li>
+						<li id="latest" class="tabItems">Latest</li>
+					</ul>
+					<div class="cardWrapper">
+						<div class="imageWrapper">
+							<div class="ui-layer">
+								<div class="ui-photos">
+									<img id="photo1" alt="NASA Image 1" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo2" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo3" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo4" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo5" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo6" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo7" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo8" alt="NASA Image 2" />
+								</div>
+								<div class="ui-photos">
+									<img id="photo9" alt="NASA Image 2" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="./src/main.ts"></script>
+	</body>
 </html>
