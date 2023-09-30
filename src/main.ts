@@ -1,4 +1,5 @@
 import { Data } from '../Interface/data'
+import { DateTime } from 'luxon'
 
 import {
   fetchRandomImages,
@@ -91,6 +92,8 @@ window.addEventListener('load', async () => {
   const images = await fetchRandomImages()
   displayImages(images)
 
-  const today = new Date().toISOString().split('T')[0]
+  const todayInET = DateTime.local().setZone('America/New_York')
+  const today = todayInET.toISODate()
+
   fetchDailyImage(today)
 })
