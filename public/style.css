@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@400;500;700&display=swap');
+
 body {
   height: 100vh;
   width: 100vw;
@@ -20,23 +22,34 @@ body {
   flex-direction: column;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+p,
+li {
+  font-family: 'Lato', sans-serif;
+}
+.titleContainer {
+  display: flex;
   justify-content: center;
-  text-align: center;
+  height: auto;
   width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 0;
+  position: relative;
+  align-items: center;
+}
+
+.titleContainer h1 {
   font-size: 1.6rem;
   font-weight: 600;
   color: #fff;
   text-shadow: 0 0 10px #fff;
   text-align: center;
-}
-
-.titleContainer {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
 }
 
 .Container {
@@ -55,9 +68,9 @@ h1 {
   height: 100%;
   width: 50%;
   flex-direction: column;
-  margin: 10px;
+  margin: 5px;
   object-fit: contain;
-  left: 0;
+  left: 3%;
   position: absolute;
 }
 
@@ -66,12 +79,14 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 30%;
+  width: auto;
 }
 
 #searchButton {
   display: flex;
   justify-content: center;
   height: 36%;
+  width: auto;
   align-items: center;
 }
 
@@ -86,10 +101,8 @@ h1 {
   flex: 1;
   overflow: auto;
   height: 100%;
-  width: 100%;
+  width: 99%;
   text-align: center;
-  padding: 10px;
-  margin: 10px;
   flex-direction: row;
   color: #fff;
 }
@@ -105,6 +118,12 @@ h1 {
   flex-direction: row;
 }
 
+#imageDate {
+  display: flex;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
 .imageAndDesc {
   margin-top: 10px;
   height: 98%;
@@ -113,12 +132,13 @@ h1 {
   flex-direction: column;
   object-fit: contain;
   object-position: center center;
+  position: relative;
 }
 
 .imageAndDesc img {
   border: 5px solid #fff;
   width: 100%;
-  height: 70%;
+  height: 65%;
   object-fit: cover;
   object-position: center center;
 }
@@ -128,20 +148,21 @@ h1 {
   display: flex;
   flex-direction: column;
   object-fit: contain;
-  height: 80%;
-  width: 40%;
+  height: 92%;
+  width: 45%;
   justify-content: center;
-  right: 10px;
-  top: 13%;
+  right: 3%;
+  margin: 5px;
   position: absolute;
 }
 
 .tabList {
   display: flex;
-  width: 97.5%;
+  width: 98%;
   flex-direction: row;
-  border: 5px solid #fff;
+  border: 3px solid #fff;
   position: relative;
+  border-bottom: 0;
 }
 
 .tabUL {
