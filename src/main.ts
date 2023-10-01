@@ -93,6 +93,7 @@ fetchDailyImage(new Date().toISOString().split('T')[0])
 window.addEventListener('load', async () => {
   const images = await fetchRandomImages()
   displayImages(images)
+  attachClickEventToPhotos(images)
 
   const todayInET = DateTime.local().setZone('America/New_York')
   const today = todayInET.toISODate()

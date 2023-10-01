@@ -65,16 +65,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 34%;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  height: 30%;
 }
 
 #searchButton {
   display: flex;
   justify-content: center;
   height: 36%;
-  margin-left: 2px;
   align-items: center;
 }
 
@@ -100,7 +97,7 @@ h1 {
 .imageDetails {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 10%;
   color: #fff;
