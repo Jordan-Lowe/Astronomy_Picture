@@ -6,6 +6,7 @@ import {
   fetchPopularImages,
   fetchLatestImage,
   fetchDailyImage,
+  incrementClickCount,
 } from '../helpers/fetchingFunctions'
 
 const randomTab = document.getElementById('random')
@@ -30,7 +31,7 @@ latestTab?.addEventListener('click', async () => {
 })
 
 function displayImages(images: Data[]) {
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 12; i++) {
     const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
     if (images[i]) {
       photo.src = images[i].url ?? ''
@@ -45,6 +46,7 @@ function attachClickEventToPhotos(images: Data[]) {
     if (photoDiv) {
       photoDiv.addEventListener('click', () => {
         updateLeftWrapper(images[i])
+        incrementClickCount(images[i])
       })
     }
   }
@@ -91,6 +93,7 @@ fetchDailyImage(new Date().toISOString().split('T')[0])
 window.addEventListener('load', async () => {
   const images = await fetchRandomImages()
   displayImages(images)
+  attachClickEventToPhotos(images)
 
   const todayInET = DateTime.local().setZone('America/New_York')
   const today = todayInET.toISODate()

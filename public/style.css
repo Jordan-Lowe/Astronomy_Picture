@@ -65,16 +65,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 34%;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  height: 30%;
 }
 
 #searchButton {
   display: flex;
   justify-content: center;
   height: 36%;
-  margin-left: 2px;
   align-items: center;
 }
 
@@ -100,7 +97,7 @@ h1 {
 .imageDetails {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 10%;
   color: #fff;
@@ -216,4 +213,79 @@ h1 {
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+/* Media Query for screen size 300px */
+@media only screen and (max-width: 300px) {
+  .Container {
+    flex-direction: column;
+  }
+  .leftWrapper,
+  .rightWrapper {
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Media Query for screen size 600px */
+@media only screen and (min-width: 301px) and (max-width: 600px) {
+  .Container {
+    flex-direction: column;
+  }
+  .leftWrapper,
+  .rightWrapper {
+    height: 50%;
+    width: 100%;
+    position: relative;
+  }
+}
+
+/* Media Query for screen size 850px */
+@media only screen and (min-width: 601px) and (max-width: 850px) {
+  .leftWrapper {
+    width: 50%;
+  }
+  .rightWrapper {
+    width: 40%;
+  }
+}
+
+/* Media Query for screen size 1100px */
+@media only screen and (min-width: 851px) and (max-width: 1100px) {
+  .leftWrapper {
+    width: 50%;
+  }
+  .rightWrapper {
+    width: 40%;
+  }
+}
+
+/* Media Query for screen size 1600px */
+@media only screen and (min-width: 1101px) and (max-width: 1600px) {
+  .leftWrapper {
+    width: 50%;
+  }
+  .rightWrapper {
+    width: 40%;
+  }
+}
+
+/* Media Query for screen size 2000px */
+@media only screen and (min-width: 1601px) and (max-width: 2000px) {
+  .leftWrapper {
+    width: 50%;
+  }
+  .rightWrapper {
+    width: 40%;
+  }
+}
+
+/* Media Query for screen size larger than 2000px */
+@media only screen and (min-width: 2001px) {
+  .leftWrapper {
+    width: 50%;
+  }
+  .rightWrapper {
+    width: 40%;
+  }
 }

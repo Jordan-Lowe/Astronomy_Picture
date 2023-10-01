@@ -31,6 +31,11 @@ export async function fetchRandomImages(): Promise<Data[]> {
   // Parse response as JSON
   const data: Data[] = await response.json()
 
+  // Store data in Firestore
+  data.forEach((image) => {
+    storeDataInFirebase(image)
+  })
+
   // Return fetched data
   return data
 }
@@ -82,7 +87,7 @@ export async function fetchDailyImage(dateToFetch: string) {
     .catch((error) => console.error('Error fetching daily image:', error))
 }
 
-async function incrementClickCount(data: Data) {
+export async function incrementClickCount(data: Data) {
   if (data.date) {
     try {
       const docRef = doc(db, 'nasaData', data.date)
