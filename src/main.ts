@@ -7,6 +7,7 @@ import {
   fetchLatestImage,
   fetchDailyImage,
   incrementClickCount,
+  fetchLastImages,
 } from '../helpers/fetchingFunctions'
 
 const randomTab = document.getElementById('random')
@@ -26,12 +27,12 @@ popularTab?.addEventListener('click', async () => {
 })
 
 latestTab?.addEventListener('click', async () => {
-  const image = await fetchLatestImage()
-  displayImages([image])
+  const images = await fetchLastImages() // changed from fetchLatestImage to fetchLastImages
+  displayImages(images)
 })
 
 function displayImages(images: Data[]) {
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 9; i++) {
     const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
     if (images[i]) {
       photo.src = images[i].url ?? ''

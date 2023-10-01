@@ -64,6 +64,22 @@ export async function fetchPopularImages(): Promise<Data[]> {
   return popularImages
 }
 
+export async function fetchLastImages(): Promise<Data[]> {
+  const latestImages: Data[] = []
+  for (let i = 0; i < 9; i++) {
+    const date = new Date()
+    date.setDate(date.getDate() - i)
+    const dateString = date.toISOString().split('T')[0] // format as YYYY-MM-DD
+    const url = `${NASA_API_BASE}?date=${dateString}&api_key=${API_KEY}`
+    const response = await fetch(url)
+    if (response.ok) {
+      const data: Data = await response.json()
+      latestImages.push(data)
+    }
+  }
+  return latestImages
+}
+
 export async function fetchLatestImage(): Promise<Data> {
   const today = new Date().toISOString().split('T')[0]
   const url = `${NASA_API_BASE}?date=${today}&api_key=${API_KEY}`
