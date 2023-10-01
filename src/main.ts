@@ -14,6 +14,33 @@ const randomTab = document.getElementById('random')
 const popularTab = document.getElementById('popular')
 const latestTab = document.getElementById('latest')
 
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target as HTMLImageElement
+        img.src = img.getAttribute('data-src') || ''
+        observer.unobserve(img)
+      }
+    })
+  },
+  { threshold: 0.01 }
+)
+
+// Observe images with 'data-src' attribute
+document
+  .querySelectorAll('img[data-src]')
+  .forEach((img) => observer.observe(img as Element))
+
+// Observe images with 'data-src' attribute
+document
+  .querySelectorAll('img[data-src]')
+  .forEach((img) => observer.observe(img as Element))
+
+document
+  .querySelectorAll('img[data-src]')
+  .forEach((img) => observer.observe(img as Element))
+
 // Set up event listeners on the list items
 randomTab?.addEventListener('click', async () => {
   const images = await fetchRandomImages()
@@ -35,8 +62,13 @@ function displayImages(images: Data[]) {
   for (let i = 0; i < 9; i++) {
     const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
     if (images[i]) {
-      photo.src = images[i].url ?? ''
+      photo.setAttribute('data-src', images[i].url ?? '')
       photo.alt = images[i].title ?? ''
+      observer.observe(photo) // Ensure the observer is observing the image
+
+      photo.onload = function () {
+        ;(this as HTMLImageElement).classList.add('loaded') // Add 'loaded' class to the image when it's loaded
+      }
     }
   }
 }
