@@ -14,6 +14,7 @@ const randomTab = document.getElementById('random')
 const popularTab = document.getElementById('popular')
 const latestTab = document.getElementById('latest')
 
+//Observer for lazy loading
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
