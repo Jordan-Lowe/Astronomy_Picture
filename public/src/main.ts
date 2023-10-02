@@ -1,4 +1,4 @@
-import { Data } from '../Interface/data'
+import { Data } from '../../Interface/data'
 import { DateTime } from 'luxon'
 
 import {
@@ -139,5 +139,7 @@ window.addEventListener('load', async () => {
   const todayInET = DateTime.local().setZone('America/New_York')
   const today = todayInET.toISODate()
 
-  fetchDailyImage(today)
+  if (today !== null) {
+    fetchDailyImage(today)
+  }
 })
