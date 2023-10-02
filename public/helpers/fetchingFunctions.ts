@@ -1,4 +1,4 @@
-import { Data } from '../Interface/data'
+import { Data } from '../../Interface/data'
 import { initializeApp } from 'firebase/app'
 
 import {
