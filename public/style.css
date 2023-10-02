@@ -298,34 +298,99 @@ li {
 @media only screen and (max-width: 300px) {
   .Container {
     flex-direction: column;
+    font-size: 0.6rem;
   }
   .leftWrapper,
   .rightWrapper {
     width: 100%;
+    height: 40%;
     position: relative;
+  }
+  .titleContainer {
+    height: 10%;
+    width: 100%;
   }
 }
 
 /* Media Query for screen size 600px */
 @media only screen and (min-width: 301px) and (max-width: 600px) {
+  #app {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    font-size: 0.4rem;
+    object-fit: contain;
+  }
+
   .Container {
     flex-direction: column;
+    width: 100%;
+    height: 90%;
   }
   .leftWrapper,
   .rightWrapper {
-    height: 50%;
-    width: 100%;
+    height: 45%;
+    width: 95%;
     position: relative;
+    font-size: 0.4rem;
+  }
+
+  .rightWrapper {
+    object-fit: contain;
+    right: 1%;
+  }
+
+  .cardWrapper {
+    height: 95%;
+    width: 100%;
+  }
+
+  .titleContainer {
+    height: 10%;
+    width: 100%;
+  }
+
+  .titleContainer h1 {
+    font-size: 1.2rem;
+  }
+  .titleContainer img {
+    height: 80%;
+    width: auto;
+  }
+  .tabUL {
+    font-size: 1.5vw;
   }
 }
 
 /* Media Query for screen size 850px */
 @media only screen and (min-width: 601px) and (max-width: 850px) {
+  #app {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    font-size: 0.7rem;
+    object-fit: contain;
+  }
+  .tabUL {
+    font-size: 0.7rem;
+  }
+  .Container {
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+  }
+
   .leftWrapper {
-    width: 50%;
+    width: 45%;
+    height: 98%;
   }
   .rightWrapper {
     width: 40%;
+    height: 90%;
+  }
+  .titleContainer {
+    height: 10%;
+    width: 100%;
   }
 }
 
@@ -337,6 +402,9 @@ li {
   .rightWrapper {
     width: 40%;
   }
+  .tabList {
+    width: 98%;
+  }
 }
 
 /* Media Query for screen size 1600px */
@@ -346,6 +414,9 @@ li {
   }
   .rightWrapper {
     width: 40%;
+  }
+  .tabList {
+    width: 97.2%;
   }
 }
 
@@ -357,6 +428,9 @@ li {
   .rightWrapper {
     width: 40%;
   }
+  .tabList {
+    width: 97.2%;
+  }
 }
 
 /* Media Query for screen size larger than 2000px */
@@ -366,5 +440,8 @@ li {
   }
   .rightWrapper {
     width: 40%;
+  }
+  .tabList {
+    width: 97.2%;
   }
 }
