@@ -60,15 +60,22 @@ latestTab?.addEventListener('click', async () => {
 })
 
 function displayImages(images: Data[]) {
+  // Loop through each image container
   for (let i = 0; i < 9; i++) {
     const photo = document.getElementById(`photo${i + 1}`) as HTMLImageElement
+
+    // Check if image data exists
     if (images[i]) {
+      // Set image source and alt text
       photo.setAttribute('data-src', images[i].url ?? '')
       photo.alt = images[i].title ?? ''
-      observer.observe(photo) // Ensure the observer is observing the image
 
+      // Ensure observer is observing the image
+      observer.observe(photo)
+
+      // Add 'loaded' class to the image when it's loaded
       photo.onload = function () {
-        ;(this as HTMLImageElement).classList.add('loaded') // Add 'loaded' class to the image when it's loaded
+        ;(this as HTMLImageElement).classList.add('loaded')
       }
     }
   }
