@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "dist/src/main.js"]
+  "include": ["public/dist/src", "public/dist/src/main.ts"],
 }
