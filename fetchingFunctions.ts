@@ -1,4 +1,7 @@
 import { Data } from './data'
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 import { initializeApp } from 'firebase/app'
 import {
   getFirestore,
@@ -14,7 +17,7 @@ import {
   query,
 } from 'firebase/firestore'
 
-const API_KEY = 'E1RwjszVbe0bxmJHHZ5mUr8uDuTpKUYPiHkTVosB'
+const API_KEY = process.env.NASA_API_KEY!
 const NASA_API_BASE = 'https://api.nasa.gov/planetary/apod'
 
 // Fetch random images from NASA API
@@ -140,13 +143,13 @@ async function storeDataInFirebase(data: Data) {
 }
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAoARK8yJAehauyYbcx3nMkI6u9jSuUhms',
-  authDomain: 'astronomy-pictures-fe269.firebaseapp.com',
-  projectId: 'astronomy-pictures-fe269',
-  storageBucket: 'astronomy-pictures-fe269.appspot.com',
-  messagingSenderId: '852557719622',
-  appId: '1:852557719622:web:3c96fcbc99ffd5019e0247',
-  measurementId: 'G-2YWDEK86BX',
+  apiKey: process.env.FIREBASE_API_KEY!,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN!,
+  projectId: process.env.FIREBASE_PROJECT_ID!,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET!,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID!,
+  appId: process.env.FIREBASE_APP_ID!,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID!,
 }
 
 const app = initializeApp(firebaseConfig)

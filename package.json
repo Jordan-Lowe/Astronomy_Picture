@@ -11,12 +11,14 @@
     "postbuild": "mv dist/* ./ && rmdir dist"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/luxon": "^3.3.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   },
   "dependencies": {
     "@firebase/firestore": "^4.2.0",
+    "dotenv": "^16.3.1",
     "firebase": "^10.4.0",
     "luxon": "^3.4.3"
   }
