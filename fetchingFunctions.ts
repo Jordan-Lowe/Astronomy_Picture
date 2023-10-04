@@ -1,11 +1,9 @@
 import { Data } from './data'
 import { initializeApp } from 'firebase/app'
-
 import {
   getFirestore,
   collection,
   getDoc,
-  addDoc,
   doc,
   updateDoc,
   increment,
