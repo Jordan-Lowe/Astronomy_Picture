@@ -1,4 +1,4 @@
-import { Data } from '../Interface/data'
+import { Data } from './data'
 import { DateTime } from 'luxon'
 
 import {
@@ -8,7 +8,7 @@ import {
   fetchDailyImage,
   incrementClickCount,
   fetchLastImages,
-} from '../helpers/fetchingFunctions'
+} from './fetchingFunctions'
 
 const randomTab = document.getElementById('random')
 const popularTab = document.getElementById('popular')
