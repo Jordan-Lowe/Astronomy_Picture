@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "postbuild": "mv dist/* ./ && rmdir dist"
   },
+  
   "devDependencies": {
     "@types/luxon": "^3.3.2",
     "typescript": "^5.0.2",
