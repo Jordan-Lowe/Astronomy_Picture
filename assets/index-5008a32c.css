@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   object-fit: contain;
-  background-image: url(./Space-Background-dca5004b.jpg);
+  background-image: url(Space-Background-dca5004b.jpg);
   overflow: hidden;
 }
 #app {
