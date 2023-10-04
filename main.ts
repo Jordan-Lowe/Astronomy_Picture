@@ -136,5 +136,3 @@ window.addEventListener('load', async () => {
     fetchDailyImage(today)
   }
 })
-
-console.log('commit went through')
