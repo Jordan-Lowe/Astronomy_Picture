@@ -6,7 +6,8 @@ body {
   margin: 0;
   padding: 0;
   object-fit: contain;
-  background-image: url('public/Images/Space-Background.jpg');
+  /* background-image: url('Images/Space-Background.jpg'); */
+  background-color: #333;
   overflow: hidden;
 }
 
