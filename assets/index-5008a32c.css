@@ -313,6 +313,10 @@ li {
     width: 100%;
   }
 
+  .tabList {
+    width: 96.5%;
+  }
+
   .titleContainer {
     height: 10%;
     width: 100%;
@@ -339,6 +343,10 @@ li {
     font-size: 0.5rem;
     object-fit: contain;
   }
+
+  .tabList {
+    width: 96.5%;
+  }
   .tabUL {
     font-size: 0.5rem;
   }
@@ -354,7 +362,7 @@ li {
   }
   .rightWrapper {
     width: 40%;
-    height: 90%;
+    height: 80%;
   }
   .titleContainer {
     height: 10%;
@@ -384,7 +392,7 @@ li {
     width: 40%;
   }
   .tabList {
-    width: 97.2%;
+    width: 97%;
   }
 }
 
