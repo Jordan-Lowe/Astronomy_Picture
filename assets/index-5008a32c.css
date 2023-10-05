@@ -387,7 +387,7 @@ li {
 	}
 
 	.description {
-		font-size: 0.7rem;
+		font-size: 0.6rem;
 	}
 }
 
@@ -402,6 +402,9 @@ li {
 	.tabList {
 		width: 98%;
 	}
+
+  .description { 
+    font-size: 0.8rem;
 }
 
 /* Media Query for screen size 1600px */
