@@ -303,13 +303,17 @@ li {
     justify-content: center;
   }
 
+  .leftWrapper {
+    left: 0.5%;
+  }
+
   .rightWrapper {
     object-fit: contain;
-    right: 1%;
+    right: 0.5%;
   }
 
   .cardWrapper {
-    height: 95%;
+    height: 92%;
     width: 100%;
   }
 
