@@ -295,7 +295,6 @@ li {
   }
   .leftWrapper,
   .rightWrapper {
-    flex: 1;
     height: 45%;
     width: 95%;
     position: relative;
@@ -304,43 +303,31 @@ li {
     justify-content: center;
   }
 
-  .description {
-    height: auto;
-  }
-
   .leftWrapper {
     left: 0.5%;
-    top: 0%;
   }
 
   .rightWrapper {
     object-fit: contain;
     right: 0.5%;
-    position: relative;
   }
 
   .cardWrapper {
-    height: 100%;
-    width: 100%;
-  }
-
-  .imageWrapper {
-    height: 100%;
+    height: 92%;
     width: 100%;
   }
 
   .tabList {
-    top: 0%;
     width: 96.5%;
   }
 
   .titleContainer {
-    height: 8%;
+    height: 10%;
     width: 100%;
   }
 
   .titleContainer h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .titleContainer img {
     height: 80%;
