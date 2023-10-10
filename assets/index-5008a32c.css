@@ -147,16 +147,18 @@ li {
   justify-content: center;
   top: 5%;
   right: 3%;
-  margin: 5px;
+  /* margin: 5px; */
   position: absolute;
 }
 .tabList {
   display: flex;
-  width: 98%;
+  width: 100%;
   flex-direction: row;
   border: 3px solid #fff;
   position: relative;
   border-bottom: 0;
+  position: relative;
+  padding: 4px;
 }
 .tabUL {
   justify-content: space-evenly;
