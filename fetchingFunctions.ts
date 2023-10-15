@@ -67,12 +67,18 @@ export async function fetchPopularImages(): Promise<Data[]> {
 
 export async function fetchLastImages(): Promise<Data[]> {
   const latestImages: Data[] = []
+  const promises: Promise<Response>[] = []
+
   for (let i = 0; i < 9; i++) {
     const date = new Date()
     date.setDate(date.getDate() - i)
     const dateString = date.toISOString().split('T')[0] // format as YYYY-MM-DD
     const url = `${NASA_API_BASE}?date=${dateString}&api_key=${API_KEY}`
-    const response = await fetch(url)
+    promises.push(fetch(url))
+  }
+
+  const results = await Promise.all(promises)
+  for (const response of results) {
     if (response.ok) {
       const data: Data = await response.json()
       latestImages.push(data)
