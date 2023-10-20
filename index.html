@@ -1,107 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Astronomy Picture Archive</title>
+		<title>Astronomy Picture Archive</title>
 
-    <script type="module" crossorigin src="assets/index-e0e2ba31.js"></script>
-    <link rel="stylesheet" href="assets/index-5008a32c.css" />
-  </head>
-  <body>
-    <div id="app">
-      <div class="titleContainer">
-        <img id="nasaLogo" src="assets/NASA_logo-e03e4551.svg" />
-        <h1>Astronomy Picture Archive</h1>
-      </div>
-      <div class="Container">
-        <div class="leftWrapper">
-          <div class="imageDetails">
-            <input type="date" id="searchDate" name="date" />
-            <button id="searchButton">Search</button>
-            <h2 id="imageTitle"></h2>
-            <p id="imageDate"></p>
-          </div>
-          <div class="imageAndDesc">
-            <div class="dailyWrapper">
-              <img id="dailyImage" alt="NASA daily image" />
-            </div>
-            <div class="description">
-              <p id="imageDescription"></p>
-            </div>
-          </div>
-        </div>
-        <div class="rightWrapper">
-          <div class="tabList">
-            <ul class="tabUL">
-              <li id="latest" class="tabItems">Latest</li>
-              <li id="popular" class="tabItems">Popular</li>
-              <li id="random" class="tabItems">Random</li>
-            </ul>
-          </div>
-          <div class="cardWrapper">
-            <div class="imageWrapper">
-              <div class="ui-layer">
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo1" alt="NASA Image 1" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo2" alt="NASA Image 2" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo3" alt="NASA Image 3" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo4" alt="NASA Image 4" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo5" alt="NASA Image 5" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo6" alt="NASA Image 6" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo7" alt="NASA Image 7" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo8" alt="NASA Image 8" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-                <div class="ui-photos">
-                  <div class="image-container">
-                    <img id="photo9" alt="NASA Image 9" class="lazy-image" />
-                    <div class="spinner"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+		<script type="module" crossorigin src="assets/index-e0e2ba31.js"></script>
+		<link rel="stylesheet" href="assets/index-5008a32c.css" />
+	</head>
+	<body>
+		<div id="app">
+			<div class="titleContainer">
+				<img id="nasaLogo" src="assets/NASA_logo-e03e4551.svg" />
+				<h1>Astronomy Picture Archive</h1>
+			</div>
+			<div class="Container">
+				<div class="leftWrapper">
+					<div class="imageDetails">
+						<input type="date" id="searchDate" name="date" />
+						<button id="searchButton">Search</button>
+						<h2 id="imageTitle"></h2>
+						<p id="imageDate"></p>
+					</div>
+					<div class="imageAndDesc">
+						<div class="dailyWrapper">
+							<img id="dailyImage" alt="NASA daily image" />
+						</div>
+						<div class="description">
+							<p id="imageDescription"></p>
+						</div>
+					</div>
+				</div>
+				<div class="rightWrapper">
+					<div class="listContainer">
+						<div class="tabList">
+							<ul class="tabUL">
+								<li id="latest" class="tabItems">Latest</li>
+								<li id="popular" class="tabItems">Popular</li>
+								<li id="random" class="tabItems">Random</li>
+							</ul>
+						</div>
+					</div>
+					<div class="cardWrapper">
+						<div class="imageWrapper">
+							<div class="ui-layer">
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo1" alt="NASA Image 1" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo2" alt="NASA Image 2" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo3" alt="NASA Image 3" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo4" alt="NASA Image 4" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo5" alt="NASA Image 5" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo6" alt="NASA Image 6" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo7" alt="NASA Image 7" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo8" alt="NASA Image 8" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+								<div class="ui-photos">
+									<div class="image-container">
+										<img id="photo9" alt="NASA Image 9" class="lazy-image" />
+										<div class="spinner"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
